@@ -14,10 +14,10 @@ import (
 )
 
 type BxdConfig struct {
-	folder string
+	folder   string
 	keyDelim string
 
-	envMaps map[string]string
+	envMaps  map[string]string
 	confMaps map[string]interface{}
 	confRows map[string][]byte
 }
@@ -38,11 +38,11 @@ func NewBxdConfig(params ...interface{}) (interface{}, error) {
 	}
 
 	bxdConf := &BxdConfig{
-		folder:folder,
-		envMaps:envMaps,
-		confMaps:map[string]interface{}{},
-		confRows:map[string][]byte{},
-		keyDelim:".",
+		folder:   folder,
+		envMaps:  envMaps,
+		confMaps: map[string]interface{}{},
+		confRows: map[string][]byte{},
+		keyDelim: ".",
 	}
 
 	files, err := ioutil.ReadDir(folder)

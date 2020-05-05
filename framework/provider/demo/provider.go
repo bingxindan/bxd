@@ -1,0 +1,31 @@
+package demo
+
+import (
+	"bxd/framework"
+	"fmt"
+)
+
+type DemoServiceProvider struct {
+	C map[string]string
+	framework.ServiceProvider
+}
+
+func (sp *DemoServiceProvider) Name() string {
+	return "demo"
+}
+
+func (sp *DemoServiceProvider) Register(c framework.Container) framework.NewInstance {
+	return NewDemoService
+}
+
+func (sp *DemoServiceProvider) IsDefer() bool {
+	return true
+}
+
+func (sp *DemoServiceProvider) Params() []interface{} {
+	return []interface{}{sp.C}
+}
+
+func (sp *DemoServiceProvider) Boot(c framework.Container) {
+	fmt.Println("demo service boot")
+}
